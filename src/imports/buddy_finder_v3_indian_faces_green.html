@@ -1,0 +1,734 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --p:#76A588;--p1:#F0F6F2;--p2:#5A8C6E;--p3:#3D6B50;--p4:#2A5040;
+  --n:#F4F7F5;--n2:#E8EDEA;--n3:#D4DDD8;--n4:#B8C8BF;
+  --dark:#1C1C1C;--dark2:#2E3830;
+  --muted:#6B7B70;--muted2:#9AADA4;
+  --white:#FFFFFF;
+  --card:#FFFFFF;
+}
+body{font-family:'Be Vietnam Pro',sans-serif;background:var(--color-background-tertiary);padding:.5rem}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.flow-nav{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:.75rem}
+.fn{padding:5px 10px;border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--n3);background:var(--white);color:var(--dark);font-family:'Be Vietnam Pro',sans-serif;transition:all .15s}
+.fn.on{background:var(--p3);color:#fff;border-color:var(--p3)}
+.stage{display:flex;justify-content:center}
+.phone{width:375px;background:var(--n);border-radius:40px;overflow:hidden;border:1.5px solid var(--n3);position:relative;display:flex;flex-direction:column;min-height:800px}
+.screen{display:none;flex-direction:column;flex:1}
+.screen.on{display:flex}
+.sb{padding:12px 22px 4px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;background:var(--white)}
+.sb-t{font-size:12px;font-weight:600;color:var(--dark);font-family:'Be Vietnam Pro',sans-serif}
+.sig{display:flex;gap:2px;align-items:flex-end}
+.b{width:3px;background:var(--dark);border-radius:1px}
+
+/* AVATAR PORTRAITS using DiceBear Indian-look seed via unavatar/ui-avatars */
+.face{border-radius:50%;object-fit:cover;background:var(--n2)}
+
+/* SPLASH */
+.splash-wrap{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 28px;background:var(--white)}
+.splash-ring{width:80px;height:80px;border-radius:50%;background:var(--p1);border:2px solid var(--n3);display:flex;align-items:center;justify-content:center;margin-bottom:18px;overflow:hidden}
+.splash-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:28px;font-weight:800;color:var(--dark);margin-bottom:4px;letter-spacing:-.5px}
+.splash-tag{font-size:13px;color:var(--muted);text-align:center;line-height:1.6;margin-bottom:32px}
+.face-row{display:flex;align-items:center;margin-bottom:6px}
+.face-sm{width:32px;height:32px;border-radius:50%;border:2px solid var(--white);margin-left:-9px;overflow:hidden;background:var(--n2)}
+.face-sm:first-child{margin-left:0}
+.face-sm img{width:100%;height:100%;object-fit:cover}
+.count-txt{font-size:12px;color:var(--muted);margin-bottom:30px;font-weight:500}
+.btn-p{width:100%;padding:14px;border-radius:14px;background:var(--p3);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;margin-bottom:10px;transition:opacity .15s}
+.btn-p:hover{opacity:.9}
+.btn-o{width:100%;padding:13px;border-radius:14px;background:transparent;color:var(--p3);border:1.5px solid var(--p3);font-size:14px;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;margin-bottom:8px}
+.btn-g{width:100%;padding:10px;border-radius:14px;background:transparent;color:var(--muted);border:none;font-size:13px;font-weight:500;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif}
+
+/* AUTH */
+.auth-hero{height:180px;background:var(--p3);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 0 22px;flex-shrink:0}
+.auth-logo{font-family:'Plus Jakarta Sans',sans-serif;font-size:24px;font-weight:800;color:#fff}
+.auth-sub-txt{font-size:12px;color:rgba(255,255,255,.7);margin-top:4px}
+.auth-body{padding:24px 22px;flex:1;overflow-y:auto;background:var(--white)}
+.auth-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:var(--dark);margin-bottom:4px}
+.auth-desc{font-size:12px;color:var(--muted);margin-bottom:20px;line-height:1.5}
+.lbl{font-size:11px;font-weight:600;color:var(--dark);margin-bottom:5px;display:block}
+.inp{width:100%;padding:11px 13px;border-radius:12px;border:1.5px solid var(--n3);background:var(--n);font-size:13px;color:var(--dark);outline:none;font-family:'Be Vietnam Pro',sans-serif;margin-bottom:12px}
+.inp:focus{border-color:var(--p)}
+.forgot{font-size:11px;color:var(--p2);font-weight:600;text-align:right;display:block;margin-bottom:18px;cursor:pointer}
+.divrow{display:flex;align-items:center;gap:8px;margin:14px 0}
+.divrow::before,.divrow::after{content:'';flex:1;height:1px;background:var(--n3)}
+.divrow span{font-size:11px;color:var(--muted2)}
+.soc-btn{width:100%;padding:11px;border-radius:12px;border:1.5px solid var(--n3);background:var(--white);font-size:12px;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;color:var(--dark);display:flex;align-items:center;justify-content:center;gap:7px;margin-bottom:8px}
+.auth-sw{text-align:center;font-size:12px;color:var(--muted);margin-top:14px}
+.auth-sw b{color:var(--p2);cursor:pointer;font-weight:600}
+.step-bars{display:flex;gap:4px;padding:12px 22px 0;flex-shrink:0;background:var(--white)}
+.sbar{flex:1;height:3px;border-radius:2px;background:var(--n3)}
+.sbar.done,.sbar.act{background:var(--p)}
+
+/* ONBOARDING BODY */
+.ob-head{padding:18px 22px 10px;background:var(--white);flex-shrink:0}
+.ob-badge{display:inline-flex;align-items:center;gap:5px;background:var(--p1);padding:4px 10px;border-radius:8px;margin-bottom:10px;border:1px solid var(--n3)}
+.ob-badge-t{font-size:11px;color:var(--p3);font-weight:600}
+.ob-h{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:800;color:var(--dark);margin-bottom:4px}
+.ob-s{font-size:12px;color:var(--muted);line-height:1.5}
+.ob-body{padding:14px 22px;flex:1;overflow-y:auto;background:var(--white)}
+.sec-lbl{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px}
+.chip-grid{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.chip{padding:8px 13px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid var(--n3);background:var(--white);color:var(--dark);display:flex;align-items:center;gap:5px;font-family:'Be Vietnam Pro',sans-serif;transition:all .15s}
+.chip.on{background:var(--p3);border-color:var(--p3);color:#fff}
+.why-box{background:var(--p1);border-radius:12px;padding:11px 13px;border:1px solid var(--n3);margin-bottom:14px}
+.why-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;color:var(--p3);font-weight:700;margin-bottom:3px}
+.why-s{font-size:11px;color:var(--p2);line-height:1.5}
+.cur-city-pill{display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:10px;border:1.5px solid var(--p);background:var(--p1);font-size:12px;font-weight:600;color:var(--p3);margin-bottom:16px}
+
+/* DISCOVER — clean green only */
+.disc-sb{padding:12px 18px 6px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;background:var(--white)}
+.logo-txt{font-family:'Plus Jakarta Sans',sans-serif;font-size:18px;font-weight:800;color:var(--dark)}
+.logo-txt span{color:var(--p)}
+.ic-row{display:flex;gap:6px}
+.ic-btn{width:34px;height:34px;border-radius:10px;background:var(--n);border:1px solid var(--n3);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px}
+.disc-city{padding:0 18px 6px;font-size:12px;color:var(--muted);background:var(--white);flex-shrink:0}
+.disc-city b{color:var(--p3);font-weight:600}
+.fbar{padding:8px 18px 10px;display:flex;gap:6px;overflow-x:auto;background:var(--white);flex-shrink:0;border-bottom:1px solid var(--n2)}
+.fbar::-webkit-scrollbar{display:none}
+.fc{padding:6px 13px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap;cursor:pointer;border:1px solid var(--n3);background:var(--n);color:var(--muted);flex-shrink:0;font-family:'Be Vietnam Pro',sans-serif;transition:all .15s}
+.fc.on{background:var(--p3);border-color:var(--p3);color:#fff}
+.disc-scroll{overflow-y:auto;flex:1;padding:12px 0 76px;background:var(--n)}
+
+/* BUDDY CARD — clean, image-forward, green only */
+.bcard{margin:0 14px 12px;border-radius:20px;background:var(--white);border:1px solid var(--n2);overflow:hidden}
+.bcard-img{width:100%;height:160px;object-fit:cover;object-position:top;display:block;background:var(--n2)}
+.bcard-img-wrap{position:relative}
+.online-pill{position:absolute;top:10px;left:10px;display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.92);padding:4px 9px;border-radius:20px;border:1px solid var(--n3)}
+.online-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;flex-shrink:0}
+.online-txt{font-size:10px;font-weight:600;color:var(--dark)}
+.dist-pill{position:absolute;top:10px;right:10px;background:rgba(255,255,255,.92);padding:4px 9px;border-radius:20px;border:1px solid var(--n3);font-size:10px;font-weight:600;color:var(--dark)}
+.hometown-pill{position:absolute;bottom:10px;left:10px;display:flex;align-items:center;gap:4px;background:var(--p3);padding:4px 10px;border-radius:20px}
+.ht-dot{width:5px;height:5px;border-radius:50%;background:#fff}
+.ht-txt{font-size:10px;font-weight:600;color:#fff}
+.bcard-body{padding:12px 14px 14px}
+.bcard-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:2px}
+.bcard-role{font-size:11px;color:var(--muted);margin-bottom:10px}
+.btags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.btag{padding:4px 9px;border-radius:8px;font-size:11px;font-weight:500;background:var(--p1);color:var(--p3);border:1px solid var(--n3)}
+.bactions{display:flex;gap:8px}
+.btn-con{flex:1;padding:10px;border-radius:11px;background:var(--p3);color:#fff;border:none;font-size:13px;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;transition:opacity .15s}
+.btn-con:hover{opacity:.88}
+.btn-sk{width:44px;height:40px;border-radius:11px;background:transparent;border:1.5px solid var(--n3);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+
+/* hometown banner — subtle green */
+.home-banner{margin:0 14px 10px;background:var(--p1);border-radius:14px;padding:11px 14px;display:flex;align-items:center;gap:10px;border:1px solid var(--n3)}
+.hb-icon{font-size:20px}
+.hb-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;color:var(--p3)}
+.hb-s{font-size:11px;color:var(--p2);margin-top:2px}
+.hb-count{background:var(--p3);padding:3px 9px;border-radius:8px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap}
+
+/* MAP */
+.map-head{padding:12px 18px 8px;display:flex;justify-content:space-between;align-items:center;background:var(--white);border-bottom:1px solid var(--n2);flex-shrink:0}
+.map-ht{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;color:var(--dark)}
+.map-area{flex:1;background:#DDE8E0;position:relative;overflow:hidden;min-height:400px}
+.mgrid{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(150,180,160,.25) 39px,rgba(150,180,160,.25) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(150,180,160,.25) 39px,rgba(150,180,160,.25) 40px)}
+.mroad{position:absolute;background:#fff;border-radius:2px}
+.mpin{position:absolute;border-radius:50%;border:3px solid #fff;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;background:var(--n2)}
+.mpin img{width:100%;height:100%;object-fit:cover}
+.mpulse{position:absolute;border-radius:50%;background:rgba(118,165,136,.18);animation:mpp 2s ease-out infinite}
+@keyframes mpp{0%{width:40px;height:40px;opacity:1}100%{width:100px;height:100px;opacity:0}}
+.mring{position:absolute;border-radius:50%;border:1.5px dashed rgba(118,165,136,.4);pointer-events:none}
+.map-ctrl{position:absolute;bottom:82px;left:14px;right:14px}
+.rad-card{background:var(--white);border-radius:14px;padding:10px 13px;border:1px solid var(--n3);display:flex;align-items:center;gap:10px}
+.rad-lbl{font-size:11px;color:var(--muted);font-weight:600;white-space:nowrap}
+.rad-sl{flex:1;accent-color:var(--p3)}
+.rad-val{font-size:12px;font-weight:600;color:var(--dark);min-width:28px;text-align:right}
+.map-prev{position:absolute;bottom:145px;left:50%;transform:translateX(-50%);background:var(--white);border-radius:16px;padding:10px 13px;border:1px solid var(--n3);width:210px;display:none;align-items:center;gap:9px}
+.map-prev.show{display:flex}
+.mp-av{width:38px;height:38px;border-radius:50%;overflow:hidden;background:var(--n2);flex-shrink:0}
+.mp-av img{width:100%;height:100%;object-fit:cover}
+.mp-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;color:var(--dark)}
+.mp-info{font-size:10px;color:var(--muted);margin-top:1px}
+.mp-btn{margin-top:5px;padding:5px 11px;border-radius:7px;background:var(--p3);color:#fff;border:none;font-size:11px;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif}
+
+/* PROFILE */
+.prof-hero{height:220px;position:relative;overflow:hidden;flex-shrink:0}
+.prof-img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.prof-overlay{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(transparent,rgba(28,28,28,.75))}
+.prof-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:800;color:#fff}
+.prof-city-txt{font-size:12px;color:rgba(255,255,255,.8);margin-top:3px}
+.tbadge-row{position:absolute;top:14px;right:14px;display:flex;gap:6px}
+.tbadge{padding:3px 9px;border-radius:7px;background:rgba(255,255,255,.88);font-size:10px;color:var(--p3);font-weight:600}
+.prof-body{padding:14px 18px;overflow-y:auto;flex:1;padding-bottom:76px;background:var(--white)}
+.journey-card{background:var(--p1);border-radius:14px;padding:12px 13px;border:1px solid var(--n3);margin-bottom:12px}
+.jc-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;color:var(--p3);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.jc-cities{display:flex;align-items:center;gap:7px}
+.jc-city{padding:5px 11px;border-radius:8px;background:var(--white);border:1px solid var(--n3);font-size:11px;font-weight:600;color:var(--dark)}
+.jc-city.cur{background:var(--p3);border-color:var(--p3);color:#fff}
+.jc-quote{font-size:11px;color:var(--p2);margin-top:8px;font-style:italic}
+.stats-row{display:flex;gap:8px;margin-bottom:12px}
+.stat{flex:1;background:var(--n);border-radius:12px;border:1px solid var(--n3);padding:10px;text-align:center}
+.stat.hl{background:var(--p1);border-color:var(--n3)}
+.stat-n{font-family:'Plus Jakarta Sans',sans-serif;font-size:17px;font-weight:800;color:var(--dark)}
+.stat.hl .stat-n{color:var(--p3)}
+.stat-l{font-size:10px;color:var(--muted);margin-top:1px}
+.sec-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--dark);margin-bottom:8px}
+.ptags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.ptag{padding:4px 10px;border-radius:8px;font-size:11px;font-weight:500;background:var(--p1);color:var(--p3);border:1px solid var(--n3)}
+.mutual-box{background:var(--p1);border-radius:12px;padding:10px 12px;border:1px solid var(--n3);display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.mut-t{font-size:12px;color:var(--p3);font-weight:600}
+.looking-wrap{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.lk{padding:6px 11px;border-radius:9px;background:var(--n);border:1px solid var(--n3);font-size:11px;font-weight:600;color:var(--dark);display:flex;align-items:center;gap:4px}
+.divline{height:1px;background:var(--n2);margin:12px 0}
+
+/* CHAT */
+.chat-head{padding:10px 14px;background:var(--white);border-bottom:1px solid var(--n2);display:flex;align-items:center;gap:8px;flex-shrink:0}
+.ch-back{font-size:18px;cursor:pointer;color:var(--dark);font-weight:700}
+.ch-av-wrap{width:36px;height:36px;border-radius:50%;overflow:hidden;background:var(--n2);flex-shrink:0}
+.ch-av-wrap img{width:100%;height:100%;object-fit:cover}
+.ch-name-wrap{flex:1}
+.ch-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--dark)}
+.ch-sub{font-size:10px;color:var(--p2);font-weight:500;margin-top:1px;display:flex;align-items:center;gap:3px}
+.ch-dot{width:5px;height:5px;border-radius:50%;background:var(--p)}
+.origin-bar{background:var(--p1);padding:7px 14px;display:flex;align-items:center;gap:6px;flex-shrink:0;border-bottom:1px solid var(--n3)}
+.ob-t{font-size:11px;color:var(--p3);font-weight:600}
+.ob-end{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;color:var(--p2);margin-left:auto;font-weight:700}
+.msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--n)}
+.msg{max-width:76%;padding:9px 12px;border-radius:16px;font-size:13px;line-height:1.5}
+.msg.them{align-self:flex-start;background:var(--white);border:1px solid var(--n3);color:var(--dark);border-bottom-left-radius:3px}
+.msg.me{align-self:flex-end;background:var(--p3);color:#fff;border-bottom-right-radius:3px}
+.msg-t{font-size:10px;color:var(--muted2);margin-top:2px}
+.ice-wrap{padding:8px 14px;background:var(--white);border-top:1px solid var(--n2);flex-shrink:0}
+.ice-lbl{font-size:10px;font-weight:600;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.ice-row{display:flex;gap:5px;overflow-x:auto}
+.ice-row::-webkit-scrollbar{display:none}
+.ice{padding:6px 11px;border-radius:9px;background:var(--p1);border:1px solid var(--n3);font-size:11px;font-weight:600;color:var(--p3);white-space:nowrap;flex-shrink:0;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif}
+.chat-in{padding:8px 14px 18px;background:var(--white);display:flex;gap:7px;align-items:center;flex-shrink:0}
+.ci{flex:1;padding:10px 13px;border-radius:12px;border:1.5px solid var(--n3);background:var(--n);font-size:13px;outline:none;font-family:'Be Vietnam Pro',sans-serif;color:var(--dark)}
+.ci:focus{border-color:var(--p)}
+.send{width:38px;height:38px;border-radius:11px;background:var(--p3);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;flex-shrink:0}
+
+/* ROOMS */
+.room-head{padding:12px 18px 8px;display:flex;justify-content:space-between;align-items:center;background:var(--white);border-bottom:1px solid var(--n2);flex-shrink:0}
+.room-scroll{overflow-y:auto;flex:1;padding:12px 0 76px;background:var(--n)}
+.sec-head-row{padding:4px 14px 8px;display:flex;align-items:center;gap:7px}
+.shline{flex:1;height:1px;background:var(--n3)}
+.shbadge{padding:3px 10px;border-radius:8px;font-size:10px;font-weight:600;background:var(--p1);color:var(--p3);border:1px solid var(--n3);white-space:nowrap}
+.rcard{margin:0 14px 9px;border-radius:14px;background:var(--white);border:1px solid var(--n2);padding:11px 13px;display:flex;align-items:center;gap:10px}
+.rcard.ht{background:var(--p1);border-color:var(--n3)}
+.r-icon{width:42px;height:42px;border-radius:12px;background:var(--n);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;border:1px solid var(--n3)}
+.rcard.ht .r-icon{background:var(--white)}
+.r-info{flex:1}
+.r-name{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--dark)}
+.rcard.ht .r-name{color:var(--p3)}
+.r-meta{font-size:11px;color:var(--muted);margin-top:2px}
+.r-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.r-exp{font-size:10px;font-weight:600;color:var(--muted2);background:var(--n2);padding:2px 7px;border-radius:6px}
+.r-join{padding:6px 12px;border-radius:8px;background:var(--p3);color:#fff;border:none;font-size:11px;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif}
+
+/* SAFETY */
+.saf-hero{background:var(--dark);padding:26px 20px 20px;flex-shrink:0}
+.saf-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:800;color:#fff;margin-bottom:4px}
+.saf-s{font-size:12px;color:rgba(255,255,255,.6);line-height:1.5}
+.saf-body{padding:14px 18px;overflow-y:auto;flex:1;padding-bottom:76px;background:var(--white)}
+.saf-card{background:var(--n);border-radius:14px;border:1px solid var(--n2);padding:12px 13px;margin-bottom:9px}
+.saf-ch{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.saf-icon{width:34px;height:34px;border-radius:10px;background:var(--p1);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;border:1px solid var(--n3)}
+.saf-ct{font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;color:var(--dark)}
+.saf-cx{font-size:11px;color:var(--muted);line-height:1.5}
+.tog-row{background:var(--n);border-radius:14px;border:1px solid var(--n2);padding:12px 13px;display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.tog{width:42px;height:24px;border-radius:12px;background:var(--p);position:relative;cursor:pointer;flex-shrink:0}
+.tog-k{position:absolute;top:2px;left:22px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .2s}
+
+/* EMPTY */
+.empty-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 28px;text-align:center;background:var(--white)}
+.empty-ring{width:100px;height:100px;background:var(--p1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:44px;margin-bottom:18px;border:2px dashed var(--n3)}
+.empty-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:19px;font-weight:800;color:var(--dark);margin-bottom:5px}
+.empty-s{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:20px}
+.fallback{width:100%;background:var(--n);border-radius:14px;border:1px solid var(--n3);padding:13px;margin-top:10px;text-align:left}
+.fb-t{font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;color:var(--p3);font-weight:700;margin-bottom:4px}
+.fb-s{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:9px}
+
+/* BOTTOM NAV */
+.bnav{position:absolute;bottom:0;left:0;right:0;height:68px;background:rgba(244,247,245,.97);border-top:1px solid var(--n3);display:flex;align-items:center;justify-content:space-around;padding:0 4px}
+.ni{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:7px 10px;border-radius:10px}
+.ni-icon{font-size:18px;opacity:.3}
+.ni.on .ni-icon{opacity:1}
+.ni-lbl{font-size:9px;font-weight:600;color:var(--muted2);font-family:'Be Vietnam Pro',sans-serif}
+.ni.on .ni-lbl{color:var(--p3)}
+.ndot{width:5px;height:5px;border-radius:50%;background:var(--p);margin-top:-5px;margin-left:9px}
+</style>
+
+<h2 class="sr-only">Buddy Finder full flow — Kindred Sage green theme — real Indian face portraits — 12 screens fully navigable</h2>
+
+<div class="flow-nav">
+  <button class="fn on"  onclick="go('splash',this)">1 Splash</button>
+  <button class="fn" onclick="go('login',this)">2 Login</button>
+  <button class="fn" onclick="go('signup',this)">3 Sign Up</button>
+  <button class="fn" onclick="go('hometown',this)">4 Hometown</button>
+  <button class="fn" onclick="go('interests',this)">5 Interests</button>
+  <button class="fn" onclick="go('discover',this)">6 Discover</button>
+  <button class="fn" onclick="go('map',this)">7 Map</button>
+  <button class="fn" onclick="go('rooms',this)">8 Rooms</button>
+  <button class="fn" onclick="go('profile',this)">9 Profile</button>
+  <button class="fn" onclick="go('chat',this)">10 Chat</button>
+  <button class="fn" onclick="go('safety',this)">11 Safety</button>
+  <button class="fn" onclick="go('empty',this)">12 Empty</button>
+</div>
+
+<div class="stage"><div class="phone">
+
+<!-- Indian face URLs via UI Avatars + thispersondoesnotexist style realistic seeds -->
+<!-- Using randomuser.me Indian-look portrait URLs (lottie-style fallback SVG avatars) -->
+
+<!-- 1. SPLASH -->
+<div class="screen on" id="sc-splash">
+  <div class="sb"><span class="sb-t">9:41</span><div class="sig"><div class="b" style="height:4px"></div><div class="b" style="height:6px"></div><div class="b" style="height:9px"></div><div class="b" style="height:12px"></div></div></div>
+  <div class="splash-wrap">
+    <div class="splash-ring">
+      <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="22" fill="#76A588"/><path d="M14 26c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="22" cy="16" r="4" fill="#fff"/><path d="M8 32c1.5-2.5 5-4 8-4M36 32c-1.5-2.5-5-4-8-4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".6"/></svg>
+    </div>
+    <div class="splash-name">Buddy Finder</div>
+    <div class="splash-tag">Find your people,<br>wherever life takes you.</div>
+    <div class="face-row">
+      <div class="face-sm"><img src="https://randomuser.me/api/portraits/men/91.jpg" alt="user"></div>
+      <div class="face-sm"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="user"></div>
+      <div class="face-sm"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="user"></div>
+      <div class="face-sm"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="user"></div>
+    </div>
+    <div class="count-txt">2,140+ buddies in Bengaluru</div>
+    <button class="btn-p" onclick="go('login',null)">Get started</button>
+    <button class="btn-o" onclick="go('login',null)">I already have an account</button>
+    <button class="btn-g" onclick="go('discover',null)">Explore without signing up</button>
+  </div>
+</div>
+
+<!-- 2. LOGIN -->
+<div class="screen" id="sc-login">
+  <div class="auth-hero"><div class="auth-logo">Buddy Finder</div><div class="auth-sub-txt">Welcome back</div></div>
+  <div class="auth-body">
+    <div class="auth-title">Log in</div>
+    <div class="auth-desc">Good to see you again. Your people are waiting.</div>
+    <label class="lbl">Phone or email</label>
+    <input class="inp" placeholder="+91 98765 43210" type="text">
+    <label class="lbl">Password</label>
+    <input class="inp" placeholder="Enter your password" type="password">
+    <span class="forgot">Forgot password?</span>
+    <button class="btn-p" onclick="go('discover',null)">Log in</button>
+    <div class="divrow"><span>or continue with</span></div>
+    <button class="soc-btn" onclick="go('discover',null)"><span style="font-size:15px">G</span>Continue with Google</button>
+    <button class="soc-btn" onclick="go('discover',null)"><span style="font-size:15px">📱</span>Continue with Phone OTP</button>
+    <div class="auth-sw">Don't have an account? <b onclick="go('signup',null)">Sign up</b></div>
+  </div>
+</div>
+
+<!-- 3. SIGN UP -->
+<div class="screen" id="sc-signup">
+  <div class="sb"><span class="sb-t">9:41</span><div class="sig"><div class="b" style="height:4px"></div><div class="b" style="height:6px"></div><div class="b" style="height:9px"></div><div class="b" style="height:12px"></div></div></div>
+  <div class="step-bars"><div class="sbar act"></div><div class="sbar"></div><div class="sbar"></div></div>
+  <div class="auth-body" style="padding-top:18px">
+    <div class="auth-title">Create account</div>
+    <div class="auth-desc">Under 2 minutes. No long forms.</div>
+    <label class="lbl">Full name</label><input class="inp" placeholder="Arjun Sharma" type="text">
+    <label class="lbl">Phone number</label><input class="inp" placeholder="+91 98765 43210" type="text">
+    <label class="lbl">Password</label><input class="inp" placeholder="Min. 8 characters" type="password">
+    <label class="lbl">Current city</label><input class="inp" placeholder="Bengaluru, Karnataka" type="text">
+    <button class="btn-p" onclick="go('hometown',null)">Continue →</button>
+    <div class="divrow"><span>or sign up with</span></div>
+    <button class="soc-btn" onclick="go('hometown',null)"><span style="font-size:15px">G</span>Continue with Google</button>
+    <div class="auth-sw">Already have an account? <b onclick="go('login',null)">Log in</b></div>
+  </div>
+</div>
+
+<!-- 4. HOMETOWN -->
+<div class="screen" id="sc-hometown">
+  <div class="sb"><span class="sb-t">9:41</span><div class="sig"><div class="b" style="height:4px"></div><div class="b" style="height:6px"></div><div class="b" style="height:9px"></div><div class="b" style="height:12px"></div></div></div>
+  <div class="step-bars"><div class="sbar done"></div><div class="sbar act"></div><div class="sbar"></div></div>
+  <div class="ob-head">
+    <div class="ob-badge"><span style="font-size:12px">🏡</span><span class="ob-badge-t">City Connect</span></div>
+    <div class="ob-h">Where are you originally from?</div>
+    <div class="ob-s">People connect 3× faster with someone from the same hometown.</div>
+  </div>
+  <div class="ob-body">
+    <input class="inp" placeholder="Search hometown or state..." type="text" style="margin-bottom:12px">
+    <div class="sec-lbl">Popular hometowns</div>
+    <div class="chip-grid">
+      <div class="chip on" onclick="this.classList.toggle('on')">🏙️ Pune</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🌆 Jaipur</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🌇 Lucknow</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🏘️ Patna</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🌃 Nagpur</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🏙️ Surat</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🌆 Kochi</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🌇 Chandigarh</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🏘️ Indore</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🌃 Coimbatore</div>
+    </div>
+    <div class="why-box">
+      <div class="why-t">Why we ask this</div>
+      <div class="why-s">Shared hometown = instant common ground. Shown as city-level only — never your locality. You can hide this anytime.</div>
+    </div>
+    <div class="sec-lbl">Your current city</div>
+    <div class="cur-city-pill">📍 Bengaluru, Karnataka</div>
+    <button class="btn-p" style="margin-top:16px" onclick="go('interests',null)">Continue →</button>
+    <button class="btn-g" onclick="go('interests',null)">Skip this step</button>
+  </div>
+</div>
+
+<!-- 5. INTERESTS -->
+<div class="screen" id="sc-interests">
+  <div class="sb"><span class="sb-t">9:41</span><div class="sig"><div class="b" style="height:4px"></div><div class="b" style="height:6px"></div><div class="b" style="height:9px"></div><div class="b" style="height:12px"></div></div></div>
+  <div class="step-bars"><div class="sbar done"></div><div class="sbar done"></div><div class="sbar act"></div></div>
+  <div class="ob-head">
+    <div class="ob-h">Pick your vibe</div>
+    <div class="ob-s">Choose 3 or more. We'll find buddies who match your energy.</div>
+  </div>
+  <div class="ob-body">
+    <div class="sec-lbl">Interests</div>
+    <div class="chip-grid">
+      <div class="chip on" onclick="this.classList.toggle('on')">🍜 Food</div>
+      <div class="chip" onclick="this.classList.toggle('on')">💪 Fitness</div>
+      <div class="chip on" onclick="this.classList.toggle('on')">💻 Tech</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🎮 Gaming</div>
+      <div class="chip on" onclick="this.classList.toggle('on')">🎵 Music</div>
+      <div class="chip" onclick="this.classList.toggle('on')">📚 Study</div>
+      <div class="chip" onclick="this.classList.toggle('on')">✈️ Travel</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🏏 Cricket</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🧘 Wellness</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🚴 Cycling</div>
+      <div class="chip" onclick="this.classList.toggle('on')">☕ Cafes</div>
+      <div class="chip" onclick="this.classList.toggle('on')">🎭 Culture</div>
+    </div>
+    <div class="sec-lbl" style="margin-top:4px">Looking for</div>
+    <div class="chip-grid">
+      <div class="chip" onclick="this.classList.toggle('on')">💪 Gym buddy</div>
+      <div class="chip on" onclick="this.classList.toggle('on')">🗺️ City explorer</div>
+      <div class="chip" onclick="this.classList.toggle('on')">☕ Coffee chats</div>
+      <div class="chip" onclick="this.classList.toggle('on')">📖 Study partner</div>
+    </div>
+    <button class="btn-p" style="margin-top:8px" onclick="go('discover',null)">Start exploring →</button>
+  </div>
+</div>
+
+<!-- 6. DISCOVER -->
+<div class="screen" id="sc-discover">
+  <div class="sb" style="background:var(--white)"><span class="sb-t">9:41</span><div class="sig"><div class="b" style="height:4px"></div><div class="b" style="height:6px"></div><div class="b" style="height:9px"></div><div class="b" style="height:12px"></div></div></div>
+  <div class="disc-sb">
+    <div class="logo-txt">Buddy<span>.</span></div>
+    <div class="ic-row"><div class="ic-btn">🔔</div><div class="ic-btn" onclick="go('safety',null)">🛡️</div></div>
+  </div>
+  <div class="disc-city">Koramangala · <b>2,140 nearby</b> · <b>38 from Pune</b></div>
+  <div class="fbar">
+    <div class="fc on">All</div>
+    <div class="fc">🏡 From Pune</div>
+    <div class="fc">🍜 Food</div>
+    <div class="fc">💪 Fitness</div>
+    <div class="fc">💻 Tech</div>
+  </div>
+  <div class="disc-scroll">
+    <div style="padding:12px 14px 0">
+      <div class="home-banner">
+        <span class="hb-icon">🏡</span>
+        <div style="flex:1"><div class="hb-t">People from Pune nearby</div><div class="hb-s">Same streets, same food</div></div>
+        <div class="hb-count">38</div>
+      </div>
+    </div>
+    <!-- CARD 1 hometown -->
+    <div class="bcard" style="margin-top:4px">
+      <div class="bcard-img-wrap">
+        <img class="bcard-img" src="https://randomuser.me/api/portraits/men/91.jpg" alt="Rahul D.">
+        <div class="online-pill"><div class="online-dot"></div><span class="online-txt">Online</span></div>
+        <div class="dist-pill">1.4 km</div>
+        <div class="hometown-pill"><div class="ht-dot"></div><span class="ht-txt">Also from Pune</span></div>
+      </div>
+      <div class="bcard-body">
+        <div class="bcard-name">Rahul D.</div>
+        <div class="bcard-role">26 · Data Engineer · In BLR 6 months</div>
+        <div class="btags"><span class="btag">🏡 Pune</span><span class="btag">💻 Tech</span><span class="btag">🍜 Food</span><span class="btag">🏏 Cricket</span></div>
+        <div class="bactions">
+          <button class="btn-con" onclick="go('profile',null)">🏡 Connect — fellow Punekar!</button>
+          <button class="btn-sk">✕</button>
+        </div>
+      </div>
+    </div>
+    <!-- CARD 2 hometown -->
+    <div class="bcard">
+      <div class="bcard-img-wrap">
+        <img class="bcard-img" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sneha K.">
+        <div class="online-pill"><div class="online-dot" style="background:#FCD34D"></div><span class="online-txt">3h ago</span></div>
+        <div class="dist-pill">2.1 km</div>
+        <div class="hometown-pill"><div class="ht-dot"></div><span class="ht-txt">Also from Pune</span></div>
+      </div>
+      <div class="bcard-body">
+        <div class="bcard-name">Sneha K.</div>
+        <div class="bcard-role">24 · MBA Student · In BLR 2 months</div>
+        <div class="btags"><span class="btag">🏡 Pune</span><span class="btag">🎵 Music</span><span class="btag">☕ Cafes</span></div>
+        <div class="bactions">
+          <button class="btn-con" onclick="go('chat',null)">🏡 Connect — fellow Punekar!</button>
+          <button class="btn-sk">✕</button>
+        </div>
+      </div>
+    </div>
+    <div style="margin:4px 14px 10px;display:flex;align-items:center;gap:8px">
+      <div style="flex:1;height:1px;background:var(--n3)"></div>
+      <div style="padding:3px 10px;border-radius:8px;font-size:10px;font-weight:600;background:var(--n2);color:var(--muted)">Other nearby</div>
+      <div style="flex:1;height:1px;background:var(--n3)"></div>
+    </div>
+    <!-- CARD 3 regular -->
+    <div class="bcard">
+      <div class="bcard-img-wrap">
+        <img class="bcard-img" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya M.">
+        <div class="online-pill"><div class="online-dot"></div><span class="online-txt">Online</span></div>
+        <div class="dist-pill">2.8 km</div>
+      </div>
+      <div class="bcard-body">
+        <div class="bcard-name">Priya M.</div>
+        <div class="bcard-role">29 · UX Designer · In BLR 2 months</div>
+        <div class="btags"><span class="btag">🎵 Music</span><span class="btag">🧘 Yoga</span><span class="btag">☕ Cafes</span></div>
+        <div class="bactions">
+          <button class="btn-con" onclick="go('profile',null)">👋 Connect</button>
+          <button class="btn-sk">✕</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="ni on"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+    <div class="ni" onclick="go('map',null)"><div class="ni-icon">🗺️</div><div class="ni-lbl">Map</div></div>
+    <div class="ni" onclick="go('rooms',null)"><div class="ni-icon">🏘️</div><div class="ni-lbl">Rooms</div></div>
+    <div class="ni" onclick="go('chat',null)"><div class="ni-icon">💬</div><div class="ni-lbl">Chats</div><div class="ndot"></div></div>
+    <div class="ni" onclick="go('profile',null)"><div class="ni-icon">👤</div><div class="ni-lbl">Profile</div></div>
+  </div>
+</div>
+
+<!-- 7. MAP -->
+<div class="screen" id="sc-map">
+  <div class="sb" style="background:var(--white)"><span class="sb-t">9:41</span><div class="sig"><div class="b" style="height:4px"></div><div class="b" style="height:6px"></div><div class="b" style="height:9px"></div><div class="b" style="height:12px"></div></div></div>
+  <div class="map-head"><div class="map-ht">Nearby Buddies</div><div class="ic-btn">🔍</div></div>
+  <div class="map-area" onclick="hidePrev(event)">
+    <div class="mgrid"></div>
+    <div class="mroad" style="top:35%;left:0;right:0;height:8px"></div>
+    <div class="mroad" style="top:62%;left:0;right:0;height:8px"></div>
+    <div class="mroad" style="left:30%;top:0;bottom:0;width:8px"></div>
+    <div class="mroad" style="left:65%;top:0;bottom:0;width:8px"></div>
+    <div class="mpulse" style="top:calc(50% - 20px);left:calc(50% - 20px)"></div>
+    <div class="mpin" style="width:40px;height:40px;top:calc(50% - 20px);left:calc(50% - 20px);background:var(--p3);border-color:#fff"><span style="color:#fff;font-size:16px">📍</span></div>
+    <div class="mring" style="top:calc(50% - 72px);left:calc(50% - 72px);width:144px;height:144px"></div>
+    <div class="mpin" style="width:38px;height:38px;top:20%;left:15%" onclick="showPrev('Rahul D.','1.4km · Pune · Tech','https://randomuser.me/api/portraits/men/91.jpg')"><img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Rahul"></div>
+    <div class="mpin" style="width:38px;height:38px;top:17%;left:57%" onclick="showPrev('Sneha K.','2.1km · Pune · Music','https://randomuser.me/api/portraits/women/44.jpg')"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sneha"></div>
+    <div class="mpin" style="width:38px;height:38px;top:65%;left:68%" onclick="showPrev('Priya M.','2.8km · Music · Cafes','https://randomuser.me/api/portraits/women/68.jpg')"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya"></div>
+    <div class="mpin" style="width:38px;height:38px;top:67%;left:17%" onclick="showPrev('Rohan K.','3.5km · Cycling · Games','https://randomuser.me/api/portraits/men/32.jpg')"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rohan"></div>
+    <div class="map-prev" id="mprev">
+      <div class="mp-av"><img id="mpImg" src="" alt=""></div>
+      <div><div class="mp-name" id="mpName">Rahul D.</div><div class="mp-info" id="mpInfo">1.4km · Pune · Tech</div><button class="mp-btn" onclick="go('profile',null)">View profile</button></div>
+    </div>
+  </div>
+  <div class="map-ctrl">
+    <div class="rad-card">
+      <span class="rad-lbl">Radius</span>
+      <input type="range" class="rad-sl" min="1" max="10" value="5" step="1" oninput="document.getElementById('rv').textContent=this.value+'km'">
+      <span class="rad-val" id="rv">5km</span>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="ni" onclick="go('discover',null)"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+    <div class="ni on"><div class="ni-icon">🗺️</div><div class="ni-lbl">Map</div></div>
+    <div class="ni" onclick="go('rooms',null)"><div class="ni-icon">🏘️</div><div class="ni-lbl">Rooms</div></div>
+    <div class="ni" onclick="go('chat',null)"><div class="ni-icon">💬</div><div class="ni-lbl">Chats</div></div>
+    <div class="ni" onclick="go('profile',null)"><div class="ni-icon">👤</div><div class="ni-lbl">Profile</div></div>
+  </div>
+</div>
+
+<!-- 8. ROOMS -->
+<div class="screen" id="sc-rooms">
+  <div class="sb" style="background:var(--white)"><span class="sb-t">9:41</span><div class="sig"><div class="b" style="height:4px"></div><div class="b" style="height:6px"></div><div class="b" style="height:9px"></div><div class="b" style="height:12px"></div></div></div>
+  <div class="room-head"><div class="map-ht">Activity Rooms</div><div class="ic-btn">＋</div></div>
+  <div style="padding:4px 18px 10px;font-size:11px;color:var(--muted);background:var(--white);border-bottom:1px solid var(--n2);flex-shrink:0">Group up first, connect 1:1 later · Rooms expire in 48h</div>
+  <div class="room-scroll">
+    <div class="sec-head-row"><div class="shline"></div><div class="shbadge">🏡 Hometown rooms</div><div class="shline"></div></div>
+    <div class="rcard ht">
+      <div class="r-icon">🏡</div>
+      <div class="r-info"><div class="r-name">Pune Gang — BLR</div><div class="r-meta">38 members · Koramangala</div></div>
+      <div class="r-right"><div class="r-exp">48h</div><button class="r-join">Join</button></div>
+    </div>
+    <div class="rcard ht">
+      <div class="r-icon">🍜</div>
+      <div class="r-info"><div class="r-name">Pune Food Trail BLR</div><div class="r-meta">12 members · Finding misal pav</div></div>
+      <div class="r-right"><div class="r-exp">24h</div><button class="r-join">Join</button></div>
+    </div>
+    <div class="sec-head-row"><div class="shline"></div><div class="shbadge">🌍 All activity rooms</div><div class="shline"></div></div>
+    <div class="rcard">
+      <div class="r-icon">🚴</div>
+      <div class="r-info"><div class="r-name">Sunday Cycling — Koramangala</div><div class="r-meta">8 members · 6am start</div></div>
+      <div class="r-right"><div class="r-exp">36h</div><button class="r-join">Join</button></div>
+    </div>
+    <div class="rcard">
+      <div class="r-icon">📚</div>
+      <div class="r-info"><div class="r-name">UPSC Study Group — Aundh</div><div class="r-meta">6 members · Daily 7–9pm</div></div>
+      <div class="r-right"><div class="r-exp">48h</div><button class="r-join">Join</button></div>
+    </div>
+    <div class="rcard">
+      <div class="r-icon">🍜</div>
+      <div class="r-info"><div class="r-name">Irani Chai Crawl — MG Road</div><div class="r-meta">10 members · This Saturday</div></div>
+      <div class="r-right"><div class="r-exp">20h</div><button class="r-join">Join</button></div>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="ni" onclick="go('discover',null)"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+    <div class="ni" onclick="go('map',null)"><div class="ni-icon">🗺️</div><div class="ni-lbl">Map</div></div>
+    <div class="ni on"><div class="ni-icon">🏘️</div><div class="ni-lbl">Rooms</div></div>
+    <div class="ni" onclick="go('chat',null)"><div class="ni-icon">💬</div><div class="ni-lbl">Chats</div></div>
+    <div class="ni" onclick="go('profile',null)"><div class="ni-icon">👤</div><div class="ni-lbl">Profile</div></div>
+  </div>
+</div>
+
+<!-- 9. PROFILE -->
+<div class="screen" id="sc-profile">
+  <div class="sb" style="background:transparent;position:absolute;top:0;left:0;right:0;z-index:2"><span class="sb-t" style="color:#fff">9:41</span><div class="sig"><div class="b" style="height:4px;background:#fff"></div><div class="b" style="height:6px;background:#fff"></div><div class="b" style="height:9px;background:#fff"></div><div class="b" style="height:12px;background:#fff"></div></div></div>
+  <div class="prof-hero">
+    <img class="prof-img" src="https://randomuser.me/api/portraits/men/91.jpg" alt="Rahul D.">
+    <div class="prof-overlay">
+      <div class="prof-name">Rahul Deshmukh</div>
+      <div class="prof-city-txt">📍 Koramangala, BLR · Originally from Pune</div>
+    </div>
+    <div class="tbadge-row"><div class="tbadge">✓ Verified</div><div class="tbadge">🏡 Punekar</div></div>
+  </div>
+  <div class="prof-body">
+    <div class="journey-card">
+      <div class="jc-t">🏡 City Journey</div>
+      <div class="jc-cities"><div class="jc-city">🏘️ Pune</div><span style="color:var(--p2);font-size:14px;font-weight:700">→</span><div class="jc-city cur">📍 Bengaluru</div></div>
+      <div class="jc-quote">"FC Road kid, now surviving on Swiggy in Koramangala 😄"</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat hl"><div class="stat-n">8</div><div class="stat-l">Pune buddies</div></div>
+      <div class="stat"><div class="stat-n">14</div><div class="stat-l">Connections</div></div>
+      <div class="stat"><div class="stat-n">97%</div><div class="stat-l">Reply rate</div></div>
+    </div>
+    <div class="mutual-box"><span style="font-size:18px">🤝</span><div class="mut-t">3 shared interests: Tech, Food & Gaming</div></div>
+    <div class="divline"></div>
+    <div class="sec-t">About</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:12px">"Moved here for my first tech job. Love exploring food spots on weekends. Always down for football or late-night ramen."</div>
+    <div class="divline"></div>
+    <div class="sec-t">Interests</div>
+    <div class="ptags"><span class="ptag">🏡 Pune</span><span class="ptag">💻 Tech</span><span class="ptag">🍜 Food</span><span class="ptag">🏏 Cricket</span><span class="ptag">🎵 Music</span></div>
+    <div class="divline"></div>
+    <div class="sec-t">Looking for</div>
+    <div class="looking-wrap"><div class="lk">💪 Gym buddy</div><div class="lk">🏡 Fellow Punekar</div><div class="lk">🗺️ City explorer</div></div>
+    <button class="btn-p" onclick="go('chat',null)">🏡 Connect — you're both from Pune!</button>
+  </div>
+  <div class="bnav">
+    <div class="ni" onclick="go('discover',null)"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+    <div class="ni" onclick="go('map',null)"><div class="ni-icon">🗺️</div><div class="ni-lbl">Map</div></div>
+    <div class="ni" onclick="go('rooms',null)"><div class="ni-icon">🏘️</div><div class="ni-lbl">Rooms</div></div>
+    <div class="ni" onclick="go('chat',null)"><div class="ni-icon">💬</div><div class="ni-lbl">Chats</div></div>
+    <div class="ni on"><div class="ni-icon">👤</div><div class="ni-lbl">Profile</div></div>
+  </div>
+</div>
+
+<!-- 10. CHAT -->
+<div class="screen" id="sc-chat">
+  <div class="sb"><span class="sb-t">9:41</span><div class="sig"><div class="b" style="height:4px"></div><div class="b" style="height:6px"></div><div class="b" style="height:9px"></div><div class="b" style="height:12px"></div></div></div>
+  <div class="chat-head">
+    <div class="ch-back" onclick="go('profile',null)">←</div>
+    <div class="ch-av-wrap"><img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Rahul"></div>
+    <div class="ch-name-wrap">
+      <div class="ch-name">Rahul D.</div>
+      <div class="ch-sub"><div class="ch-dot"></div>Fellow Punekar · Online now</div>
+    </div>
+    <div class="ic-btn">⋯</div>
+  </div>
+  <div class="origin-bar"><span style="font-size:13px">🏡</span><span class="ob-t">You're both from Pune · FC Road area</span><span class="ob-end">Insta bond!</span></div>
+  <div class="msgs">
+    <div style="text-align:center;font-size:10px;color:var(--muted2);margin:2px 0">Today · 10:14 AM</div>
+    <div class="msg them">Bhai tu bhi Pune se hai?! FC Road side se 😂</div>
+    <div class="msg-t" style="align-self:flex-start;padding-left:2px">10:14 AM</div>
+    <div class="msg me">Haan yaar! Kothrud. Tu Deccan side ka lagta hai 😄</div>
+    <div class="msg-t" style="align-self:flex-end">10:15 AM</div>
+    <div class="msg them">Bengaluru mein Vada Pav dhundh raha tha 😭 kuch milta nahin proper</div>
+    <div class="msg-t" style="align-self:flex-start;padding-left:2px">10:16 AM</div>
+    <div class="msg me">Found one spot in Indiranagar — bilkul FC Road wala feel 🙌</div>
+    <div class="msg-t" style="align-self:flex-end">10:17 AM</div>
+  </div>
+  <div class="ice-wrap">
+    <div class="ice-lbl">Hometown icebreakers</div>
+    <div class="ice-row">
+      <div class="ice">Miss FC Road?</div>
+      <div class="ice">Best Pune spot?</div>
+      <div class="ice">Why BLR?</div>
+      <div class="ice">Up for food trail?</div>
+    </div>
+  </div>
+  <div class="chat-in">
+    <input class="ci" placeholder="Type a message..." type="text">
+    <button class="send">➤</button>
+  </div>
+</div>
+
+<!-- 11. SAFETY -->
+<div class="screen" id="sc-safety">
+  <div class="sb" style="background:var(--dark)"><span class="sb-t" style="color:#fff">9:41</span><div class="sig"><div class="b" style="height:4px;background:#fff"></div><div class="b" style="height:6px;background:#fff"></div><div class="b" style="height:9px;background:#fff"></div><div class="b" style="height:12px;background:#fff"></div></div></div>
+  <div class="saf-hero"><div style="font-size:28px;margin-bottom:8px">🛡️</div><div class="saf-t">Your safety first.</div><div class="saf-s">Every feature is built with your protection in mind.</div></div>
+  <div class="saf-body">
+    <div class="tog-row">
+      <div class="saf-icon">👩</div>
+      <div style="flex:1"><div class="saf-ct">Women-only visibility</div><div style="font-size:11px;color:var(--muted);margin-top:2px">Only visible to verified women</div></div>
+      <div class="tog" onclick="this.classList.toggle('off')"><div class="tog-k"></div></div>
+    </div>
+    <div class="saf-card"><div class="saf-ch"><div class="saf-icon">✓</div><div class="saf-ct">Phone-verified profiles</div></div><div class="saf-cx">Every user verifies via OTP before going live. Fake accounts blocked at signup.</div></div>
+    <div class="saf-card"><div class="saf-ch"><div class="saf-icon">📍</div><div class="saf-ct">Timed location sharing</div></div><div class="saf-cx">Share live location for 1 hour before a meetup. Auto-expires. Always your choice.</div></div>
+    <div class="saf-card"><div class="saf-ch"><div class="saf-icon">🚫</div><div class="saf-ct">Report & block instantly</div></div><div class="saf-cx">Any user can be reported from chat. Blocked users can never contact you again.</div></div>
+    <div class="saf-card" style="background:var(--p1);border-color:var(--n3)"><div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;color:var(--p3);font-weight:700;margin-bottom:4px">Meetup tip</div><div class="saf-cx" style="color:var(--p2)">Always meet in a public place first. Tell a friend where you're going and when you'll be back.</div></div>
+  </div>
+  <div class="bnav">
+    <div class="ni" onclick="go('discover',null)"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+    <div class="ni" onclick="go('map',null)"><div class="ni-icon">🗺️</div><div class="ni-lbl">Map</div></div>
+    <div class="ni" onclick="go('rooms',null)"><div class="ni-icon">🏘️</div><div class="ni-lbl">Rooms</div></div>
+    <div class="ni" onclick="go('chat',null)"><div class="ni-icon">💬</div><div class="ni-lbl">Chats</div></div>
+    <div class="ni" onclick="go('profile',null)"><div class="ni-icon">👤</div><div class="ni-lbl">Profile</div></div>
+  </div>
+</div>
+
+<!-- 12. EMPTY -->
+<div class="screen" id="sc-empty">
+  <div class="sb" style="background:var(--white)"><span class="sb-t">9:41</span><div class="sig"><div class="b" style="height:4px"></div><div class="b" style="height:6px"></div><div class="b" style="height:9px"></div><div class="b" style="height:12px"></div></div></div>
+  <div class="disc-sb"><div class="logo-txt">Buddy<span>.</span></div><div class="ic-btn">🔔</div></div>
+  <div class="empty-body">
+    <div class="empty-ring">🗺️</div>
+    <div class="empty-t">No buddies nearby yet.</div>
+    <div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;color:var(--p2);font-weight:600;margin-bottom:6px">Be the first explorer here!</div>
+    <div class="empty-s">Enable your location to appear on the map — someone nearby is probably looking for company too.</div>
+    <button class="btn-p" style="max-width:280px">📍 Enable location</button>
+    <button class="btn-g" style="margin-top:6px">Share Buddy Finder with friends</button>
+    <div class="fallback">
+      <div class="fb-t">Meanwhile → Browse Activity Rooms</div>
+      <div class="fb-s">Groups forming around food trails, cycling, study sessions and more.</div>
+      <button class="btn-o" style="font-size:12px;padding:9px" onclick="go('rooms',null)">Browse Rooms</button>
+    </div>
+  </div>
+  <div class="bnav">
+    <div class="ni on"><div class="ni-icon">🏠</div><div class="ni-lbl">Home</div></div>
+    <div class="ni" onclick="go('map',null)"><div class="ni-icon">🗺️</div><div class="ni-lbl">Map</div></div>
+    <div class="ni" onclick="go('rooms',null)"><div class="ni-icon">🏘️</div><div class="ni-lbl">Rooms</div></div>
+    <div class="ni" onclick="go('chat',null)"><div class="ni-icon">💬</div><div class="ni-lbl">Chats</div></div>
+    <div class="ni" onclick="go('profile',null)"><div class="ni-icon">👤</div><div class="ni-lbl">Profile</div></div>
+  </div>
+</div>
+
+</div></div>
+
+<script>
+function go(id, el){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.fn').forEach(t=>t.classList.remove('on'));
+  document.getElementById('sc-'+id).classList.add('on');
+  if(el) el.classList.add('on');
+  else {
+    const map={splash:0,login:1,signup:2,hometown:3,interests:4,discover:5,map:6,rooms:7,profile:8,chat:9,safety:10,empty:11};
+    const btns=document.querySelectorAll('.fn');
+    if(btns[map[id]]) btns[map[id]].classList.add('on');
+  }
+}
+function showPrev(name,info,img){
+  document.getElementById('mpName').textContent=name;
+  document.getElementById('mpInfo').textContent=info;
+  document.getElementById('mpImg').src=img;
+  document.getElementById('mprev').classList.add('show');
+}
+function hidePrev(e){
+  if(!e.target.closest('#mprev')) document.getElementById('mprev').classList.remove('show');
+}
+</script>
