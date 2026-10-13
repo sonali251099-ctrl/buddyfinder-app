@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BadgeCheck, Ban, Bell, Bike, BookOpen, BookOpenText, Building2, Coffee, Drama, Dumbbell, Flower2, Gamepad2, Globe, Hand, Handshake, Home, House, Laptop, Map, MapPin, MessageCircle, Music, Plane, Search, SendHorizontal, ShieldCheck, Smartphone, Trophy, User, UserRound, Users, UtensilsCrossed, X } from 'lucide-react';
 import '../styles/buddy-finder.css';
 
 export default function App() {
@@ -57,10 +58,10 @@ export default function App() {
               <div className="splash-name">Buddy Finder</div>
               <div className="splash-tag">Find your people,<br />wherever life takes you.</div>
               <div className="face-row">
-                <div className="face-sm"><img src="https://randomuser.me/api/portraits/men/91.jpg" alt="user" /></div>
-                <div className="face-sm"><img src="https://randomuser.me/api/portraits/women/44.jpg" alt="user" /></div>
-                <div className="face-sm"><img src="https://randomuser.me/api/portraits/men/32.jpg" alt="user" /></div>
-                <div className="face-sm"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="user" /></div>
+                <div className="face-sm"><img src="https://images.unsplash.com/photo-1757744705465-ea08b0ddc38a?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="user" /></div>
+                <div className="face-sm"><img src="https://images.unsplash.com/photo-1747264464985-2bc2e20c739e?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="user" /></div>
+                <div className="face-sm"><img src="https://images.unsplash.com/photo-1759851683916-b1aee28f28a2?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="user" /></div>
+                <div className="face-sm"><img src="https://images.unsplash.com/photo-1725611224180-4a50ef13a0e8?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="user" /></div>
               </div>
               <div className="count-txt">2,140+ buddies in Bengaluru</div>
               <button className="btn-p" onClick={() => go('login')}>Get started</button>
@@ -89,7 +90,7 @@ export default function App() {
                 <span style={{ fontSize: '15px' }}>G</span>Continue with Google
               </button>
               <button className="soc-btn" onClick={() => go('discover')}>
-                <span style={{ fontSize: '15px' }}>📱</span>Continue with Phone OTP
+                <span style={{ fontSize: '15px' }}><Smartphone className="lic" /></span>Continue with Phone OTP
               </button>
               <div className="auth-sw">Don't have an account? <b onClick={() => go('signup')}>Sign up</b></div>
             </div>
@@ -149,7 +150,7 @@ export default function App() {
             </div>
             <div className="ob-head">
               <div className="ob-badge">
-                <span style={{ fontSize: '12px' }}>🏡</span>
+                <span style={{ fontSize: '12px' }}><House className="lic" /></span>
                 <span className="ob-badge-t">City Connect</span>
               </div>
               <div className="ob-h">Where are you originally from?</div>
@@ -159,23 +160,23 @@ export default function App() {
               <input className="inp" placeholder="Search hometown or state..." type="text" style={{ marginBottom: '12px' }} />
               <div className="sec-lbl">Popular hometowns</div>
               <div className="chip-grid">
-                <div className={`chip ${selectedChips['pune'] ? 'on' : ''}`} onClick={() => toggleChip('pune')}>🏙️ Pune</div>
-                <div className={`chip ${selectedChips['jaipur'] ? 'on' : ''}`} onClick={() => toggleChip('jaipur')}>🌆 Jaipur</div>
-                <div className={`chip ${selectedChips['lucknow'] ? 'on' : ''}`} onClick={() => toggleChip('lucknow')}>🌇 Lucknow</div>
-                <div className={`chip ${selectedChips['patna'] ? 'on' : ''}`} onClick={() => toggleChip('patna')}>🏘️ Patna</div>
-                <div className={`chip ${selectedChips['nagpur'] ? 'on' : ''}`} onClick={() => toggleChip('nagpur')}>🌃 Nagpur</div>
-                <div className={`chip ${selectedChips['surat'] ? 'on' : ''}`} onClick={() => toggleChip('surat')}>🏙️ Surat</div>
-                <div className={`chip ${selectedChips['kochi'] ? 'on' : ''}`} onClick={() => toggleChip('kochi')}>🌆 Kochi</div>
-                <div className={`chip ${selectedChips['chandigarh'] ? 'on' : ''}`} onClick={() => toggleChip('chandigarh')}>🌇 Chandigarh</div>
-                <div className={`chip ${selectedChips['indore'] ? 'on' : ''}`} onClick={() => toggleChip('indore')}>🏘️ Indore</div>
-                <div className={`chip ${selectedChips['coimbatore'] ? 'on' : ''}`} onClick={() => toggleChip('coimbatore')}>🌃 Coimbatore</div>
+                <div className={`chip ${selectedChips['pune'] ? 'on' : ''}`} onClick={() => toggleChip('pune')}><Building2 className="lic lic-g" />Pune</div>
+                <div className={`chip ${selectedChips['jaipur'] ? 'on' : ''}`} onClick={() => toggleChip('jaipur')}><Building2 className="lic lic-g" />Jaipur</div>
+                <div className={`chip ${selectedChips['lucknow'] ? 'on' : ''}`} onClick={() => toggleChip('lucknow')}><Building2 className="lic lic-g" />Lucknow</div>
+                <div className={`chip ${selectedChips['patna'] ? 'on' : ''}`} onClick={() => toggleChip('patna')}><Building2 className="lic lic-g" />Patna</div>
+                <div className={`chip ${selectedChips['nagpur'] ? 'on' : ''}`} onClick={() => toggleChip('nagpur')}><Building2 className="lic lic-g" />Nagpur</div>
+                <div className={`chip ${selectedChips['surat'] ? 'on' : ''}`} onClick={() => toggleChip('surat')}><Building2 className="lic lic-g" />Surat</div>
+                <div className={`chip ${selectedChips['kochi'] ? 'on' : ''}`} onClick={() => toggleChip('kochi')}><Building2 className="lic lic-g" />Kochi</div>
+                <div className={`chip ${selectedChips['chandigarh'] ? 'on' : ''}`} onClick={() => toggleChip('chandigarh')}><Building2 className="lic lic-g" />Chandigarh</div>
+                <div className={`chip ${selectedChips['indore'] ? 'on' : ''}`} onClick={() => toggleChip('indore')}><Building2 className="lic lic-g" />Indore</div>
+                <div className={`chip ${selectedChips['coimbatore'] ? 'on' : ''}`} onClick={() => toggleChip('coimbatore')}><Building2 className="lic lic-g" />Coimbatore</div>
               </div>
               <div className="why-box">
                 <div className="why-t">Why we ask this</div>
                 <div className="why-s">Shared hometown = instant common ground. Shown as city-level only — never your locality. You can hide this anytime.</div>
               </div>
               <div className="sec-lbl">Your current city</div>
-              <div className="cur-city-pill">📍 Bengaluru, Karnataka</div>
+              <div className="cur-city-pill"><MapPin className="lic lic-g" />Bengaluru, Karnataka</div>
               <button className="btn-p" style={{ marginTop: '16px' }} onClick={() => go('interests')}>Continue →</button>
               <button className="btn-g" onClick={() => go('interests')}>Skip this step</button>
             </div>
@@ -204,25 +205,25 @@ export default function App() {
             <div className="ob-body">
               <div className="sec-lbl">Interests</div>
               <div className="chip-grid">
-                <div className={`chip ${selectedChips['food'] ? 'on' : ''}`} onClick={() => toggleChip('food')}>🍜 Food</div>
-                <div className={`chip ${selectedChips['fitness'] ? 'on' : ''}`} onClick={() => toggleChip('fitness')}>💪 Fitness</div>
-                <div className={`chip ${selectedChips['tech'] ? 'on' : ''}`} onClick={() => toggleChip('tech')}>💻 Tech</div>
-                <div className={`chip ${selectedChips['gaming'] ? 'on' : ''}`} onClick={() => toggleChip('gaming')}>🎮 Gaming</div>
-                <div className={`chip ${selectedChips['music'] ? 'on' : ''}`} onClick={() => toggleChip('music')}>🎵 Music</div>
-                <div className={`chip ${selectedChips['study'] ? 'on' : ''}`} onClick={() => toggleChip('study')}>📚 Study</div>
-                <div className={`chip ${selectedChips['travel'] ? 'on' : ''}`} onClick={() => toggleChip('travel')}>✈️ Travel</div>
-                <div className={`chip ${selectedChips['cricket'] ? 'on' : ''}`} onClick={() => toggleChip('cricket')}>🏏 Cricket</div>
-                <div className={`chip ${selectedChips['wellness'] ? 'on' : ''}`} onClick={() => toggleChip('wellness')}>🧘 Wellness</div>
-                <div className={`chip ${selectedChips['cycling'] ? 'on' : ''}`} onClick={() => toggleChip('cycling')}>🚴 Cycling</div>
-                <div className={`chip ${selectedChips['cafes'] ? 'on' : ''}`} onClick={() => toggleChip('cafes')}>☕ Cafes</div>
-                <div className={`chip ${selectedChips['culture'] ? 'on' : ''}`} onClick={() => toggleChip('culture')}>🎭 Culture</div>
+                <div className={`chip ${selectedChips['food'] ? 'on' : ''}`} onClick={() => toggleChip('food')}><UtensilsCrossed className="lic lic-g" />Food</div>
+                <div className={`chip ${selectedChips['fitness'] ? 'on' : ''}`} onClick={() => toggleChip('fitness')}><Dumbbell className="lic lic-g" />Fitness</div>
+                <div className={`chip ${selectedChips['tech'] ? 'on' : ''}`} onClick={() => toggleChip('tech')}><Laptop className="lic lic-g" />Tech</div>
+                <div className={`chip ${selectedChips['gaming'] ? 'on' : ''}`} onClick={() => toggleChip('gaming')}><Gamepad2 className="lic lic-g" />Gaming</div>
+                <div className={`chip ${selectedChips['music'] ? 'on' : ''}`} onClick={() => toggleChip('music')}><Music className="lic lic-g" />Music</div>
+                <div className={`chip ${selectedChips['study'] ? 'on' : ''}`} onClick={() => toggleChip('study')}><BookOpen className="lic lic-g" />Study</div>
+                <div className={`chip ${selectedChips['travel'] ? 'on' : ''}`} onClick={() => toggleChip('travel')}><Plane className="lic lic-g" />Travel</div>
+                <div className={`chip ${selectedChips['cricket'] ? 'on' : ''}`} onClick={() => toggleChip('cricket')}><Trophy className="lic lic-g" />Cricket</div>
+                <div className={`chip ${selectedChips['wellness'] ? 'on' : ''}`} onClick={() => toggleChip('wellness')}><Flower2 className="lic lic-g" />Wellness</div>
+                <div className={`chip ${selectedChips['cycling'] ? 'on' : ''}`} onClick={() => toggleChip('cycling')}><Bike className="lic lic-g" />Cycling</div>
+                <div className={`chip ${selectedChips['cafes'] ? 'on' : ''}`} onClick={() => toggleChip('cafes')}><Coffee className="lic lic-g" />Cafes</div>
+                <div className={`chip ${selectedChips['culture'] ? 'on' : ''}`} onClick={() => toggleChip('culture')}><Drama className="lic lic-g" />Culture</div>
               </div>
               <div className="sec-lbl" style={{ marginTop: '4px' }}>Looking for</div>
               <div className="chip-grid">
-                <div className={`chip ${selectedChips['gym'] ? 'on' : ''}`} onClick={() => toggleChip('gym')}>💪 Gym buddy</div>
-                <div className={`chip ${selectedChips['explorer'] ? 'on' : ''}`} onClick={() => toggleChip('explorer')}>🗺️ City explorer</div>
-                <div className={`chip ${selectedChips['coffee'] ? 'on' : ''}`} onClick={() => toggleChip('coffee')}>☕ Coffee chats</div>
-                <div className={`chip ${selectedChips['studypartner'] ? 'on' : ''}`} onClick={() => toggleChip('studypartner')}>📖 Study partner</div>
+                <div className={`chip ${selectedChips['gym'] ? 'on' : ''}`} onClick={() => toggleChip('gym')}><Dumbbell className="lic lic-g" />Gym buddy</div>
+                <div className={`chip ${selectedChips['explorer'] ? 'on' : ''}`} onClick={() => toggleChip('explorer')}><Map className="lic lic-g" />City explorer</div>
+                <div className={`chip ${selectedChips['coffee'] ? 'on' : ''}`} onClick={() => toggleChip('coffee')}><Coffee className="lic lic-g" />Coffee chats</div>
+                <div className={`chip ${selectedChips['studypartner'] ? 'on' : ''}`} onClick={() => toggleChip('studypartner')}><BookOpenText className="lic lic-g" />Study partner</div>
               </div>
               <button className="btn-p" style={{ marginTop: '8px' }} onClick={() => go('discover')}>Start exploring →</button>
             </div>
@@ -242,22 +243,22 @@ export default function App() {
             <div className="disc-sb">
               <div className="logo-txt">Buddy<span>.</span></div>
               <div className="ic-row">
-                <div className="ic-btn">🔔</div>
-                <div className="ic-btn" onClick={() => go('safety')}>🛡️</div>
+                <div className="ic-btn"><Bell className="lic" /></div>
+                <div className="ic-btn" onClick={() => go('safety')}><ShieldCheck className="lic" /></div>
               </div>
             </div>
             <div className="disc-city">Koramangala · <b>2,140 nearby</b> · <b>38 from Pune</b></div>
             <div className="fbar">
               <div className="fc on">All</div>
-              <div className="fc">🏡 From Pune</div>
-              <div className="fc">🍜 Food</div>
-              <div className="fc">💪 Fitness</div>
-              <div className="fc">💻 Tech</div>
+              <div className="fc"><House className="lic lic-g" />From Pune</div>
+              <div className="fc"><UtensilsCrossed className="lic lic-g" />Food</div>
+              <div className="fc"><Dumbbell className="lic lic-g" />Fitness</div>
+              <div className="fc"><Laptop className="lic lic-g" />Tech</div>
             </div>
             <div className="disc-scroll">
               <div style={{ padding: '12px 14px 0' }}>
                 <div className="home-banner">
-                  <span className="hb-icon">🏡</span>
+                  <span className="hb-icon"><House className="lic" /></span>
                   <div style={{ flex: 1 }}>
                     <div className="hb-t">People from Pune nearby</div>
                     <div className="hb-s">Same streets, same food</div>
@@ -269,7 +270,7 @@ export default function App() {
               {/* CARD 1 */}
               <div className="bcard" style={{ marginTop: '4px' }}>
                 <div className="bcard-img-wrap">
-                  <img className="bcard-img" src="https://randomuser.me/api/portraits/men/91.jpg" alt="Rahul D." />
+                  <img className="bcard-img" src="https://images.unsplash.com/photo-1757744705465-ea08b0ddc38a?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="Rahul D." />
                   <div className="online-pill">
                     <div className="online-dot"></div>
                     <span className="online-txt">Online</span>
@@ -284,14 +285,14 @@ export default function App() {
                   <div className="bcard-name">Rahul D.</div>
                   <div className="bcard-role">26 · Data Engineer · In BLR 6 months</div>
                   <div className="btags">
-                    <span className="btag">🏡 Pune</span>
-                    <span className="btag">💻 Tech</span>
-                    <span className="btag">🍜 Food</span>
-                    <span className="btag">🏏 Cricket</span>
+                    <span className="btag"><House className="lic lic-g" />Pune</span>
+                    <span className="btag"><Laptop className="lic lic-g" />Tech</span>
+                    <span className="btag"><UtensilsCrossed className="lic lic-g" />Food</span>
+                    <span className="btag"><Trophy className="lic lic-g" />Cricket</span>
                   </div>
                   <div className="bactions">
-                    <button className="btn-con" onClick={() => go('profile')}>🏡 Connect — fellow Punekar!</button>
-                    <button className="btn-sk">✕</button>
+                    <button className="btn-con" onClick={() => go('profile')}><House className="lic lic-g" />Connect — fellow Punekar!</button>
+                    <button className="btn-sk"><X className="lic" /></button>
                   </div>
                 </div>
               </div>
@@ -299,7 +300,7 @@ export default function App() {
               {/* CARD 2 */}
               <div className="bcard">
                 <div className="bcard-img-wrap">
-                  <img className="bcard-img" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sneha K." />
+                  <img className="bcard-img" src="https://images.unsplash.com/photo-1747264464985-2bc2e20c739e?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="Sneha K." />
                   <div className="online-pill">
                     <div className="online-dot" style={{ background: '#FCD34D' }}></div>
                     <span className="online-txt">3h ago</span>
@@ -314,13 +315,13 @@ export default function App() {
                   <div className="bcard-name">Sneha K.</div>
                   <div className="bcard-role">24 · MBA Student · In BLR 2 months</div>
                   <div className="btags">
-                    <span className="btag">🏡 Pune</span>
-                    <span className="btag">🎵 Music</span>
-                    <span className="btag">☕ Cafes</span>
+                    <span className="btag"><House className="lic lic-g" />Pune</span>
+                    <span className="btag"><Music className="lic lic-g" />Music</span>
+                    <span className="btag"><Coffee className="lic lic-g" />Cafes</span>
                   </div>
                   <div className="bactions">
-                    <button className="btn-con" onClick={() => go('chat')}>🏡 Connect — fellow Punekar!</button>
-                    <button className="btn-sk">✕</button>
+                    <button className="btn-con" onClick={() => go('chat')}><House className="lic lic-g" />Connect — fellow Punekar!</button>
+                    <button className="btn-sk"><X className="lic" /></button>
                   </div>
                 </div>
               </div>
@@ -334,7 +335,7 @@ export default function App() {
               {/* CARD 3 */}
               <div className="bcard">
                 <div className="bcard-img-wrap">
-                  <img className="bcard-img" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya M." />
+                  <img className="bcard-img" src="https://images.unsplash.com/photo-1725611224180-4a50ef13a0e8?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="Priya M." />
                   <div className="online-pill">
                     <div className="online-dot"></div>
                     <span className="online-txt">Online</span>
@@ -345,13 +346,13 @@ export default function App() {
                   <div className="bcard-name">Priya M.</div>
                   <div className="bcard-role">29 · UX Designer · In BLR 2 months</div>
                   <div className="btags">
-                    <span className="btag">🎵 Music</span>
-                    <span className="btag">🧘 Yoga</span>
-                    <span className="btag">☕ Cafes</span>
+                    <span className="btag"><Music className="lic lic-g" />Music</span>
+                    <span className="btag"><Flower2 className="lic lic-g" />Yoga</span>
+                    <span className="btag"><Coffee className="lic lic-g" />Cafes</span>
                   </div>
                   <div className="bactions">
-                    <button className="btn-con" onClick={() => go('profile')}>👋 Connect</button>
-                    <button className="btn-sk">✕</button>
+                    <button className="btn-con" onClick={() => go('profile')}><Hand className="lic lic-g" />Connect</button>
+                    <button className="btn-sk"><X className="lic" /></button>
                   </div>
                 </div>
               </div>
@@ -359,24 +360,24 @@ export default function App() {
 
             <div className="bnav">
               <div className="ni on">
-                <div className="ni-icon">🏠</div>
+                <div className="ni-icon"><Home className="lic" /></div>
                 <div className="ni-lbl">Home</div>
               </div>
               <div className="ni" onClick={() => go('map')}>
-                <div className="ni-icon">🗺️</div>
+                <div className="ni-icon"><Map className="lic" /></div>
                 <div className="ni-lbl">Map</div>
               </div>
               <div className="ni" onClick={() => go('rooms')}>
-                <div className="ni-icon">🏘️</div>
+                <div className="ni-icon"><Users className="lic" /></div>
                 <div className="ni-lbl">Rooms</div>
               </div>
               <div className="ni" onClick={() => go('chat')}>
-                <div className="ni-icon">💬</div>
+                <div className="ni-icon"><MessageCircle className="lic" /></div>
                 <div className="ni-lbl">Chats</div>
                 <div className="ndot"></div>
               </div>
               <div className="ni" onClick={() => go('profile')}>
-                <div className="ni-icon">👤</div>
+                <div className="ni-icon"><User className="lic" /></div>
                 <div className="ni-lbl">Profile</div>
               </div>
             </div>
@@ -395,7 +396,7 @@ export default function App() {
             </div>
             <div className="map-head">
               <div className="map-ht">Nearby Buddies</div>
-              <div className="ic-btn">🔍</div>
+              <div className="ic-btn"><Search className="lic" /></div>
             </div>
             <div className="map-area" onClick={hidePrev}>
               <div className="mgrid"></div>
@@ -405,20 +406,20 @@ export default function App() {
               <div className="mroad" style={{ left: '65%', top: 0, bottom: 0, width: '8px' }}></div>
               <div className="mpulse" style={{ top: 'calc(50% - 20px)', left: 'calc(50% - 20px)' }}></div>
               <div className="mpin" style={{ width: '40px', height: '40px', top: 'calc(50% - 20px)', left: 'calc(50% - 20px)', background: 'var(--p3)', borderColor: '#fff' }}>
-                <span style={{ color: '#fff', fontSize: '16px' }}>📍</span>
+                <span style={{ color: '#fff', fontSize: '16px' }}><MapPin className="lic" /></span>
               </div>
               <div className="mring" style={{ top: 'calc(50% - 72px)', left: 'calc(50% - 72px)', width: '144px', height: '144px' }}></div>
-              <div className="mpin" style={{ width: '38px', height: '38px', top: '20%', left: '15%' }} onClick={() => showPrev('Rahul D.', '1.4km · Pune · Tech', 'https://randomuser.me/api/portraits/men/91.jpg')}>
-                <img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Rahul" />
+              <div className="mpin" style={{ width: '38px', height: '38px', top: '20%', left: '15%' }} onClick={() => showPrev('Rahul D.', '1.4km · Pune · Tech', 'https://images.unsplash.com/photo-1757744705465-ea08b0ddc38a?w=400&h=400&fit=crop&crop=faces&q=85&auto=format')}>
+                <img src="https://images.unsplash.com/photo-1757744705465-ea08b0ddc38a?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="Rahul" />
               </div>
-              <div className="mpin" style={{ width: '38px', height: '38px', top: '17%', left: '57%' }} onClick={() => showPrev('Sneha K.', '2.1km · Pune · Music', 'https://randomuser.me/api/portraits/women/44.jpg')}>
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sneha" />
+              <div className="mpin" style={{ width: '38px', height: '38px', top: '17%', left: '57%' }} onClick={() => showPrev('Sneha K.', '2.1km · Pune · Music', 'https://images.unsplash.com/photo-1747264464985-2bc2e20c739e?w=400&h=400&fit=crop&crop=faces&q=85&auto=format')}>
+                <img src="https://images.unsplash.com/photo-1747264464985-2bc2e20c739e?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="Sneha" />
               </div>
-              <div className="mpin" style={{ width: '38px', height: '38px', top: '65%', left: '68%' }} onClick={() => showPrev('Priya M.', '2.8km · Music · Cafes', 'https://randomuser.me/api/portraits/women/68.jpg')}>
-                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya" />
+              <div className="mpin" style={{ width: '38px', height: '38px', top: '65%', left: '68%' }} onClick={() => showPrev('Priya M.', '2.8km · Music · Cafes', 'https://images.unsplash.com/photo-1725611224180-4a50ef13a0e8?w=400&h=400&fit=crop&crop=faces&q=85&auto=format')}>
+                <img src="https://images.unsplash.com/photo-1725611224180-4a50ef13a0e8?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="Priya" />
               </div>
-              <div className="mpin" style={{ width: '38px', height: '38px', top: '67%', left: '17%' }} onClick={() => showPrev('Rohan K.', '3.5km · Cycling · Games', 'https://randomuser.me/api/portraits/men/32.jpg')}>
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rohan" />
+              <div className="mpin" style={{ width: '38px', height: '38px', top: '67%', left: '17%' }} onClick={() => showPrev('Rohan K.', '3.5km · Cycling · Games', 'https://images.unsplash.com/photo-1759851683916-b1aee28f28a2?w=400&h=400&fit=crop&crop=faces&q=85&auto=format')}>
+                <img src="https://images.unsplash.com/photo-1759851683916-b1aee28f28a2?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="Rohan" />
               </div>
 
               <div className={`map-prev ${mapPreview.show ? 'show' : ''}`} id="mprev">
@@ -451,23 +452,23 @@ export default function App() {
 
             <div className="bnav">
               <div className="ni" onClick={() => go('discover')}>
-                <div className="ni-icon">🏠</div>
+                <div className="ni-icon"><Home className="lic" /></div>
                 <div className="ni-lbl">Home</div>
               </div>
               <div className="ni on">
-                <div className="ni-icon">🗺️</div>
+                <div className="ni-icon"><Map className="lic" /></div>
                 <div className="ni-lbl">Map</div>
               </div>
               <div className="ni" onClick={() => go('rooms')}>
-                <div className="ni-icon">🏘️</div>
+                <div className="ni-icon"><Users className="lic" /></div>
                 <div className="ni-lbl">Rooms</div>
               </div>
               <div className="ni" onClick={() => go('chat')}>
-                <div className="ni-icon">💬</div>
+                <div className="ni-icon"><MessageCircle className="lic" /></div>
                 <div className="ni-lbl">Chats</div>
               </div>
               <div className="ni" onClick={() => go('profile')}>
-                <div className="ni-icon">👤</div>
+                <div className="ni-icon"><User className="lic" /></div>
                 <div className="ni-lbl">Profile</div>
               </div>
             </div>
@@ -494,11 +495,11 @@ export default function App() {
             <div className="room-scroll">
               <div className="sec-head-row">
                 <div className="shline"></div>
-                <div className="shbadge">🏡 Hometown rooms</div>
+                <div className="shbadge"><House className="lic lic-g" />Hometown rooms</div>
                 <div className="shline"></div>
               </div>
               <div className="rcard ht">
-                <div className="r-icon">🏡</div>
+                <div className="r-icon"><House className="lic" /></div>
                 <div className="r-info">
                   <div className="r-name">Pune Gang — BLR</div>
                   <div className="r-meta">38 members · Koramangala</div>
@@ -509,7 +510,7 @@ export default function App() {
                 </div>
               </div>
               <div className="rcard ht">
-                <div className="r-icon">🍜</div>
+                <div className="r-icon"><UtensilsCrossed className="lic" /></div>
                 <div className="r-info">
                   <div className="r-name">Pune Food Trail BLR</div>
                   <div className="r-meta">12 members · Finding misal pav</div>
@@ -522,11 +523,11 @@ export default function App() {
 
               <div className="sec-head-row">
                 <div className="shline"></div>
-                <div className="shbadge">🌍 All activity rooms</div>
+                <div className="shbadge"><Globe className="lic lic-g" />All activity rooms</div>
                 <div className="shline"></div>
               </div>
               <div className="rcard">
-                <div className="r-icon">🚴</div>
+                <div className="r-icon"><Bike className="lic" /></div>
                 <div className="r-info">
                   <div className="r-name">Sunday Cycling — Koramangala</div>
                   <div className="r-meta">8 members · 6am start</div>
@@ -537,7 +538,7 @@ export default function App() {
                 </div>
               </div>
               <div className="rcard">
-                <div className="r-icon">📚</div>
+                <div className="r-icon"><BookOpen className="lic" /></div>
                 <div className="r-info">
                   <div className="r-name">UPSC Study Group — Aundh</div>
                   <div className="r-meta">6 members · Daily 7–9pm</div>
@@ -548,7 +549,7 @@ export default function App() {
                 </div>
               </div>
               <div className="rcard">
-                <div className="r-icon">🍜</div>
+                <div className="r-icon"><UtensilsCrossed className="lic" /></div>
                 <div className="r-info">
                   <div className="r-name">Irani Chai Crawl — MG Road</div>
                   <div className="r-meta">10 members · This Saturday</div>
@@ -562,23 +563,23 @@ export default function App() {
 
             <div className="bnav">
               <div className="ni" onClick={() => go('discover')}>
-                <div className="ni-icon">🏠</div>
+                <div className="ni-icon"><Home className="lic" /></div>
                 <div className="ni-lbl">Home</div>
               </div>
               <div className="ni" onClick={() => go('map')}>
-                <div className="ni-icon">🗺️</div>
+                <div className="ni-icon"><Map className="lic" /></div>
                 <div className="ni-lbl">Map</div>
               </div>
               <div className="ni on">
-                <div className="ni-icon">🏘️</div>
+                <div className="ni-icon"><Users className="lic" /></div>
                 <div className="ni-lbl">Rooms</div>
               </div>
               <div className="ni" onClick={() => go('chat')}>
-                <div className="ni-icon">💬</div>
+                <div className="ni-icon"><MessageCircle className="lic" /></div>
                 <div className="ni-lbl">Chats</div>
               </div>
               <div className="ni" onClick={() => go('profile')}>
-                <div className="ni-icon">👤</div>
+                <div className="ni-icon"><User className="lic" /></div>
                 <div className="ni-lbl">Profile</div>
               </div>
             </div>
@@ -596,23 +597,23 @@ export default function App() {
               </div>
             </div>
             <div className="prof-hero">
-              <img className="prof-img" src="https://randomuser.me/api/portraits/men/91.jpg" alt="Rahul D." />
+              <img className="prof-img" src="https://images.unsplash.com/photo-1757744705465-ea08b0ddc38a?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="Rahul D." />
               <div className="prof-overlay">
                 <div className="prof-name">Rahul Deshmukh</div>
-                <div className="prof-city-txt">📍 Koramangala, BLR · Originally from Pune</div>
+                <div className="prof-city-txt"><MapPin className="lic lic-g" />Koramangala, BLR · Originally from Pune</div>
               </div>
               <div className="tbadge-row">
-                <div className="tbadge">✓ Verified</div>
-                <div className="tbadge">🏡 Punekar</div>
+                <div className="tbadge"><BadgeCheck className="lic lic-g" />Verified</div>
+                <div className="tbadge"><House className="lic lic-g" />Punekar</div>
               </div>
             </div>
             <div className="prof-body">
               <div className="journey-card">
-                <div className="jc-t">🏡 City Journey</div>
+                <div className="jc-t"><House className="lic lic-g" />City Journey</div>
                 <div className="jc-cities">
-                  <div className="jc-city">🏘️ Pune</div>
+                  <div className="jc-city"><Building2 className="lic lic-g" />Pune</div>
                   <span style={{ color: 'var(--p2)', fontSize: '14px', fontWeight: 700 }}>→</span>
-                  <div className="jc-city cur">📍 Bengaluru</div>
+                  <div className="jc-city cur"><MapPin className="lic lic-g" />Bengaluru</div>
                 </div>
                 <div className="jc-quote">"FC Road kid, now surviving on Swiggy in Koramangala 😄"</div>
               </div>
@@ -631,7 +632,7 @@ export default function App() {
                 </div>
               </div>
               <div className="mutual-box">
-                <span style={{ fontSize: '18px' }}>🤝</span>
+                <span style={{ fontSize: '18px' }}><Handshake className="lic" /></span>
                 <div className="mut-t">3 shared interests: Tech, Food & Gaming</div>
               </div>
               <div className="divline"></div>
@@ -642,41 +643,41 @@ export default function App() {
               <div className="divline"></div>
               <div className="sec-t">Interests</div>
               <div className="ptags">
-                <span className="ptag">🏡 Pune</span>
-                <span className="ptag">💻 Tech</span>
-                <span className="ptag">🍜 Food</span>
-                <span className="ptag">🏏 Cricket</span>
-                <span className="ptag">🎵 Music</span>
+                <span className="ptag"><House className="lic lic-g" />Pune</span>
+                <span className="ptag"><Laptop className="lic lic-g" />Tech</span>
+                <span className="ptag"><UtensilsCrossed className="lic lic-g" />Food</span>
+                <span className="ptag"><Trophy className="lic lic-g" />Cricket</span>
+                <span className="ptag"><Music className="lic lic-g" />Music</span>
               </div>
               <div className="divline"></div>
               <div className="sec-t">Looking for</div>
               <div className="looking-wrap">
-                <div className="lk">💪 Gym buddy</div>
-                <div className="lk">🏡 Fellow Punekar</div>
-                <div className="lk">🗺️ City explorer</div>
+                <div className="lk"><Dumbbell className="lic lic-g" />Gym buddy</div>
+                <div className="lk"><House className="lic lic-g" />Fellow Punekar</div>
+                <div className="lk"><Map className="lic lic-g" />City explorer</div>
               </div>
-              <button className="btn-p" onClick={() => go('chat')}>🏡 Connect — you're both from Pune!</button>
+              <button className="btn-p" onClick={() => go('chat')}><House className="lic lic-g" />Connect — you're both from Pune!</button>
             </div>
 
             <div className="bnav">
               <div className="ni" onClick={() => go('discover')}>
-                <div className="ni-icon">🏠</div>
+                <div className="ni-icon"><Home className="lic" /></div>
                 <div className="ni-lbl">Home</div>
               </div>
               <div className="ni" onClick={() => go('map')}>
-                <div className="ni-icon">🗺️</div>
+                <div className="ni-icon"><Map className="lic" /></div>
                 <div className="ni-lbl">Map</div>
               </div>
               <div className="ni" onClick={() => go('rooms')}>
-                <div className="ni-icon">🏘️</div>
+                <div className="ni-icon"><Users className="lic" /></div>
                 <div className="ni-lbl">Rooms</div>
               </div>
               <div className="ni" onClick={() => go('chat')}>
-                <div className="ni-icon">💬</div>
+                <div className="ni-icon"><MessageCircle className="lic" /></div>
                 <div className="ni-lbl">Chats</div>
               </div>
               <div className="ni on">
-                <div className="ni-icon">👤</div>
+                <div className="ni-icon"><User className="lic" /></div>
                 <div className="ni-lbl">Profile</div>
               </div>
             </div>
@@ -696,7 +697,7 @@ export default function App() {
             <div className="chat-head">
               <div className="ch-back" onClick={() => go('profile')}>←</div>
               <div className="ch-av-wrap">
-                <img src="https://randomuser.me/api/portraits/men/91.jpg" alt="Rahul" />
+                <img src="https://images.unsplash.com/photo-1757744705465-ea08b0ddc38a?w=400&h=400&fit=crop&crop=faces&q=85&auto=format" alt="Rahul" />
               </div>
               <div className="ch-name-wrap">
                 <div className="ch-name">Rahul D.</div>
@@ -708,7 +709,7 @@ export default function App() {
               <div className="ic-btn">⋯</div>
             </div>
             <div className="origin-bar">
-              <span style={{ fontSize: '13px' }}>🏡</span>
+              <span style={{ fontSize: '13px' }}><House className="lic" /></span>
               <span className="ob-t">You're both from Pune · FC Road area</span>
               <span className="ob-end">Insta bond!</span>
             </div>
@@ -736,7 +737,7 @@ export default function App() {
             </div>
             <div className="chat-in">
               <input className="ci" placeholder="Type a message..." type="text" />
-              <button className="send">➤</button>
+              <button className="send"><SendHorizontal className="lic" /></button>
             </div>
           </div>
 
@@ -752,13 +753,13 @@ export default function App() {
               </div>
             </div>
             <div className="saf-hero">
-              <div style={{ fontSize: '28px', marginBottom: '8px' }}>🛡️</div>
+              <div style={{ fontSize: '28px', marginBottom: '8px' }}><ShieldCheck className="lic" /></div>
               <div className="saf-t">Your safety first.</div>
               <div className="saf-s">Every feature is built with your protection in mind.</div>
             </div>
             <div className="saf-body">
               <div className="tog-row">
-                <div className="saf-icon">👩</div>
+                <div className="saf-icon"><UserRound className="lic" /></div>
                 <div style={{ flex: 1 }}>
                   <div className="saf-ct">Women-only visibility</div>
                   <div style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '2px' }}>
@@ -771,21 +772,21 @@ export default function App() {
               </div>
               <div className="saf-card">
                 <div className="saf-ch">
-                  <div className="saf-icon">✓</div>
+                  <div className="saf-icon"><BadgeCheck className="lic" /></div>
                   <div className="saf-ct">Phone-verified profiles</div>
                 </div>
                 <div className="saf-cx">Every user verifies via OTP before going live. Fake accounts blocked at signup.</div>
               </div>
               <div className="saf-card">
                 <div className="saf-ch">
-                  <div className="saf-icon">📍</div>
+                  <div className="saf-icon"><MapPin className="lic" /></div>
                   <div className="saf-ct">Timed location sharing</div>
                 </div>
                 <div className="saf-cx">Share live location for 1 hour before a meetup. Auto-expires. Always your choice.</div>
               </div>
               <div className="saf-card">
                 <div className="saf-ch">
-                  <div className="saf-icon">🚫</div>
+                  <div className="saf-icon"><Ban className="lic" /></div>
                   <div className="saf-ct">Report & block instantly</div>
                 </div>
                 <div className="saf-cx">Any user can be reported from chat. Blocked users can never contact you again.</div>
@@ -802,23 +803,23 @@ export default function App() {
 
             <div className="bnav">
               <div className="ni" onClick={() => go('discover')}>
-                <div className="ni-icon">🏠</div>
+                <div className="ni-icon"><Home className="lic" /></div>
                 <div className="ni-lbl">Home</div>
               </div>
               <div className="ni" onClick={() => go('map')}>
-                <div className="ni-icon">🗺️</div>
+                <div className="ni-icon"><Map className="lic" /></div>
                 <div className="ni-lbl">Map</div>
               </div>
               <div className="ni" onClick={() => go('rooms')}>
-                <div className="ni-icon">🏘️</div>
+                <div className="ni-icon"><Users className="lic" /></div>
                 <div className="ni-lbl">Rooms</div>
               </div>
               <div className="ni" onClick={() => go('chat')}>
-                <div className="ni-icon">💬</div>
+                <div className="ni-icon"><MessageCircle className="lic" /></div>
                 <div className="ni-lbl">Chats</div>
               </div>
               <div className="ni" onClick={() => go('profile')}>
-                <div className="ni-icon">👤</div>
+                <div className="ni-icon"><User className="lic" /></div>
                 <div className="ni-lbl">Profile</div>
               </div>
             </div>
@@ -837,10 +838,10 @@ export default function App() {
             </div>
             <div className="disc-sb">
               <div className="logo-txt">Buddy<span>.</span></div>
-              <div className="ic-btn">🔔</div>
+              <div className="ic-btn"><Bell className="lic" /></div>
             </div>
             <div className="empty-body">
-              <div className="empty-ring">🗺️</div>
+              <div className="empty-ring"><Map className="lic" /></div>
               <div className="empty-t">No buddies nearby yet.</div>
               <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: '13px', color: 'var(--p2)', fontWeight: 600, marginBottom: '6px' }}>
                 Be the first explorer here!
@@ -848,7 +849,7 @@ export default function App() {
               <div className="empty-s">
                 Enable your location to appear on the map — someone nearby is probably looking for company too.
               </div>
-              <button className="btn-p" style={{ maxWidth: '280px' }}>📍 Enable location</button>
+              <button className="btn-p" style={{ maxWidth: '280px' }}><MapPin className="lic lic-g" />Enable location</button>
               <button className="btn-g" style={{ marginTop: '6px' }}>Share Buddy Finder with friends</button>
               <div className="fallback">
                 <div className="fb-t">Meanwhile → Browse Activity Rooms</div>
@@ -861,23 +862,23 @@ export default function App() {
 
             <div className="bnav">
               <div className="ni on">
-                <div className="ni-icon">🏠</div>
+                <div className="ni-icon"><Home className="lic" /></div>
                 <div className="ni-lbl">Home</div>
               </div>
               <div className="ni" onClick={() => go('map')}>
-                <div className="ni-icon">🗺️</div>
+                <div className="ni-icon"><Map className="lic" /></div>
                 <div className="ni-lbl">Map</div>
               </div>
               <div className="ni" onClick={() => go('rooms')}>
-                <div className="ni-icon">🏘️</div>
+                <div className="ni-icon"><Users className="lic" /></div>
                 <div className="ni-lbl">Rooms</div>
               </div>
               <div className="ni" onClick={() => go('chat')}>
-                <div className="ni-icon">💬</div>
+                <div className="ni-icon"><MessageCircle className="lic" /></div>
                 <div className="ni-lbl">Chats</div>
               </div>
               <div className="ni" onClick={() => go('profile')}>
-                <div className="ni-icon">👤</div>
+                <div className="ni-icon"><User className="lic" /></div>
                 <div className="ni-lbl">Profile</div>
               </div>
             </div>
