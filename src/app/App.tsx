@@ -328,7 +328,7 @@ export default function App() {
 
               <div style={{ margin: '4px 14px 10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <div style={{ flex: 1, height: '1px', background: 'var(--n3)' }}></div>
-                <div style={{ padding: '3px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: 600, background: 'var(--n2)', color: 'var(--muted)' }}>Other nearby</div>
+                <div style={{ padding: '3px 10px', borderRadius: '8px', fontSize: '10px', fontWeight: 600, background: 'var(--n2)', color: 'var(--bf-muted)' }}>Other nearby</div>
                 <div style={{ flex: 1, height: '1px', background: 'var(--n3)' }}></div>
               </div>
 
@@ -489,7 +489,7 @@ export default function App() {
               <div className="map-ht">Activity Rooms</div>
               <div className="ic-btn">＋</div>
             </div>
-            <div style={{ padding: '4px 18px 10px', fontSize: '11px', color: 'var(--muted)', background: 'var(--white)', borderBottom: '1px solid var(--n2)', flexShrink: 0 }}>
+            <div style={{ padding: '4px 18px 10px', fontSize: '11px', color: 'var(--bf-muted)', background: 'var(--white)', borderBottom: '1px solid var(--n2)', flexShrink: 0 }}>
               Group up first, connect 1:1 later · Rooms expire in 48h
             </div>
             <div className="room-scroll">
@@ -637,7 +637,7 @@ export default function App() {
               </div>
               <div className="divline"></div>
               <div className="sec-t">About</div>
-              <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '12px' }}>
+              <div style={{ fontSize: '13px', color: 'var(--bf-muted)', lineHeight: 1.6, marginBottom: '12px' }}>
                 "Moved here for my first tech job. Love exploring food spots on weekends. Always down for football or late-night ramen."
               </div>
               <div className="divline"></div>
@@ -762,7 +762,7 @@ export default function App() {
                 <div className="saf-icon"><UserRound className="lic" /></div>
                 <div style={{ flex: 1 }}>
                   <div className="saf-ct">Women-only visibility</div>
-                  <div style={{ fontSize: '11px', color: 'var(--muted)', marginTop: '2px' }}>
+                  <div style={{ fontSize: '11px', color: 'var(--bf-muted)', marginTop: '2px' }}>
                     Only visible to verified women
                   </div>
                 </div>
